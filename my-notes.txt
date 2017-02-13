@@ -1,0 +1,46 @@
+To add Firebase to an Angular2 app
+
+Install Firebase and AngularFire2 modules
+  npm i firebase angularfire2 --save
+Note the Mosh uses the dependency versions:
+  "firebase": "^3.6.0",
+  "angularfire2":"^2.0.0-beta.6"
+
+Import the AngularFireModule from angularfire2 in app.module.ts.
+  import {AngularFireModule} from 'angularfire2';
+
+Create a config object from the config given in Firebase upon creating a new project.
+  export const firebaseConfig = {
+    apiKey: "AIzaSyBjDzWnL85tgJbin5NR6hWzSXfimaBDu9I",
+    authDomain: "my-angular-app-101cd.firebaseapp.com",
+    databaseURL: "https://my-angular-app-101cd.firebaseio.com",
+    storageBucket: "my-angular-app-101cd.appspot.com",
+    messagingSenderId: "768201682332"
+  };
+
+import the module and initialize it with the config object
+...
+imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig)
+  ] ...
+
+Then inject AngularFire into the root/app component's constructor
+  import {AngularFire} from 'angularfire2';
+  ...
+  constructor(af: AngularFire){
+      console.log(af);
+    }
+  ...
+
+
+
+Firebase will return an Observable when the List() is used. To use this in a template you use
+the "*ngFor=" let c of cuisines | async" async pipe. Now the data will arrive from the passed
+observable will arrive asynchronously. This pipe will create a subscription and destroy it when
+the component is destroyed.
+
+
+
