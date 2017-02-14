@@ -1,9 +1,12 @@
 <h1>
-  {{title}}
+  Cuisines
 </h1>
-
 <ul>
-  <li *ngFor=" let c of cuisines | async">{{ c.$value }}</li>
+  <li *ngFor=" let c of cuisines | async">{{ c.$key + '- ' + c.$value }}</li>
 </ul>
-
-{{(restaurant | async)?.name}}
+<h1>
+  Restaurants
+</h1>
+<ul>
+  <li *ngFor=" let r of restaurant | async">{{ r.name }} - {{(r.cuisineType | async)?.$value}}</li>
+</ul>
