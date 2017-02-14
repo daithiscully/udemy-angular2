@@ -28,7 +28,9 @@ export class AppComponent {
     });
     this.restaurant = this.af.database.list('/restaurants', {
       query: {
-        orderByChild: 'address/city'
+        orderByChild: 'rating',
+        startAt: 3,
+        endAt: 5
       }
     });
   }
