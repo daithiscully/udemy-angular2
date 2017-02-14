@@ -1,5 +1,14 @@
-<h1>Hello {{displayName}}</h1>
-<img *ngIf="photoUrl" src="{{photoUrl}}" alt="user_facebook_photo">
-<button (click)="login()">Login</button>
-<button (click)="logout()">Logout</button>
-
+<md-grid-list cols="12">
+  <md-grid-tile [colspan]="3" [rowspan]="3">
+    <md-card>
+      <button (click)="login()">Login</button>
+      <button (click)="logout()">Logout</button>
+    </md-card>
+  </md-grid-tile>
+  <md-grid-tile [colspan]="9" [rowspan]="3">
+    <md-card>
+      <h1>Hello {{displayName}}</h1>
+      <img *ngIf="photoUrl" src="{{photoUrl}}" alt="user_facebook_photo">
+    </md-card>
+  </md-grid-tile>
+</md-grid-list>

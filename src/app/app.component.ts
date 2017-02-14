@@ -15,10 +15,11 @@ export class AppComponent {
   photoUrl: string;
 
   constructor(private af: AngularFire, private http: Http) {
-
+    console.log("Constructor started");
   }
 
   ngOnInit() {
+    console.log("OnInit started");
     this.af.auth.subscribe(authState => {
       if (!authState) {
         this.displayName = null;
