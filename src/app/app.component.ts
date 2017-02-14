@@ -30,7 +30,8 @@ export class AppComponent {
       query: {
         orderByChild: 'rating',
         startAt: 3,
-        endAt: 5
+        endAt: 5,
+        limitToFirst: 3
       }
     });
   }
