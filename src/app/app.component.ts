@@ -37,12 +37,17 @@ export class AppComponent {
   }
 
   add() {
-    this.cuisines.push({
-      name: 'Asian',
-      details: {
-        description: 'Spicy and delicious'
-      }
-    });
+    this.af.database.list('/restaurants').push({name: ""})
+      .then(x => {
+        // x.key
+        let restaurant = {name: 'My new restaurant'};
+        let update = {};
+        update['restaurants/' + x.key] = restaurant;
+        update['restaurants-by-city/camberwell/' + x.key] = restaurant;
+
+        this.af.database.object('/').update(update);
+      })
+      .catch(error => console.log(error));
   }
 
   update() {
